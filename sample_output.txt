@@ -1,0 +1,43 @@
+controlplane $ ansible-playbook -i /root/hosts /root/template.yml
+
+PLAY [Start of Jinja2 Template Push] ************************************************************************************************
+
+TASK [Gathering Facts] **************************************************************************************************************
+[DEPRECATION WARNING]: Distribution ubuntu 20.04 on host node01 should use /usr/bin/python3, but is using /usr/bin/python for 
+backward compatibility with prior Ansible releases. A future Ansible release will default to using the discovered platform python 
+for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This 
+feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [node01]
+[DEPRECATION WARNING]: Distribution ubuntu 20.04 on host controlplane should use /usr/bin/python3, but is using /usr/bin/python for 
+backward compatibility with prior Ansible releases. A future Ansible release will default to using the discovered platform python 
+for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This 
+feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [controlplane]
+
+TASK [Copy template over to all hosts] **********************************************************************************************
+changed: [node01]
+changed: [controlplane]
+
+PLAY RECAP **************************************************************************************************************************
+controlplane               : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node01                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+controlplane $ ansible servers -i /root/hosts -m shell -a 'cat /root/template.txt'
+[DEPRECATION WARNING]: Distribution ubuntu 20.04 on host node01 should use /usr/bin/python3, but is using /usr/bin/python for 
+backward compatibility with prior Ansible releases. A future Ansible release will default to using the discovered platform python 
+for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This 
+feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+node01 | CHANGED | rc=0 >>
+
+This is a template file.
+Hostname: node01
+Distribution: Ubuntu
+[DEPRECATION WARNING]: Distribution ubuntu 20.04 on host controlplane should use /usr/bin/python3, but is using /usr/bin/python for 
+backward compatibility with prior Ansible releases. A future Ansible release will default to using the discovered platform python 
+for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This 
+feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+controlplane | CHANGED | rc=0 >>
+
+This is a template file.
+Hostname: controlplane
+Distribution: Ubuntu
