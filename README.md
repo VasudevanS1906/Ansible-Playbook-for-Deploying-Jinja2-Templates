@@ -8,16 +8,23 @@ This repository contains an Ansible playbook and a Jinja2 template file for depl
 The playbook performs the following tasks:
 
 1.Copies a Jinja2 template file (template.j2) from the control node to the target servers.
+
 2.Renders the Jinja2 template using Ansible facts (e.g., hostname, distribution) to populate the configuration values.
+
 3.Deploys the rendered configuration file (template.txt) to the specified location on the target servers.
+
 4.This automation solution streamlines the configuration management process, reduces manual effort, and minimizes potential human errors during deployments.
 
 # Usage:
 
 Ensure you have Ansible installed and configured with the target servers' inventory file (hosts).
+
 Copy the template.j2 and template.yml files to the appropriate locations on the control node.
+
 Run the playbook using the command: ansible-playbook -i hosts template.yml
+
 Verify the deployment by checking the template.txt file on the target servers.
+
 This project demonstrates the use of Ansible and Jinja2 templates for configuration management and can be extended or adapted to fit specific deployment requirements
 
 # Support and Contact
